@@ -1,0 +1,74 @@
+.premierContainer{
+align-items: center;
+flex-direction: column;
+justify-content: center;
+margin: 0 auto;
+}
+.inpBuscar{
+outline: none;
+border: none;
+
+text-decoration: none;
+height: 30px;
+width: 300px;
+text-align:center;
+border-radius: 20px ;
+}
+.buttonBuscar{
+  background-color: aliceblue;
+  border: none; 
+  border-bottom:none ;
+  border-right: none ;
+  border-left: 1px solid black;
+  border-top: none;
+  margin: 10px;
+    
+}
+.divBuscar{
+  
+border: 1px solid black;
+width: fit-content;
+ margin: 0 auto;
+ border-radius: 20px;
+}
+.pageDiv{
+    display: flex;
+ margin: 0 auto;
+ width: 180px;
+}
+
+.button{
+height: 40px;
+width:100%;
+border-radius: 5px;
+background:none;
+border: none; 
+margin: 10px;
+}
+.menu{
+    display: inline-block;
+    position: relative;
+}
+.menuBtn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.menuContent{
+    display: none;
+    position: absolute;
+    background-color: rgb(110, 108, 108);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 10px;
+}
+.menu:hover .menuContent{
+    display:inline-block;
+    flex-direction: column;
+}
+.select{
+    text-align: justify;
+    width: 67px;
+    border-radius: 10px;
+}

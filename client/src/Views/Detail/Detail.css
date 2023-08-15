@@ -1,0 +1,44 @@
+.backgrounD{ 
+    background-image: url("https://img.freepik.com/foto-gratis/campo-hierba-verde-fondo_1252-1097.jpg");
+  position: fixed;
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 0 auto;
+background-repeat: repeat;
+width: 100%;
+}
+
+.imagenD{
+    border-radius: 1000px;
+    height: 600px;
+    width: 600px;
+    border: 2px solid black;
+    box-shadow: 8px 8px 9px rgba(0, 0, 0, 0.605);
+    
+}
+.divD{
+    margin: 0 auto;
+    display: flex;
+    padding: 50px;
+    align-items: center;
+    background-color: rgba(169, 159, 159, 0.529);
+    border-radius: 50px;
+width: 70%;
+box-shadow: 15px 5px 5px rgba(0, 0, 0, 0.647);
+}
+.divData{
+    flex-direction: column;
+    padding-left: 150px;
+   border-left: 1px solid black;
+    
+}
+.divImagenD{
+    padding-right:60px ;
+}
+.h1D{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 20px;
+    font-size:xx-large;
+}

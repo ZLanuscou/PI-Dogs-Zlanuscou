@@ -1,0 +1,19 @@
+.navBackground{
+    background-color: rgba(253, 253, 253, 0.946);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.link{
+text-decoration: none;
+    padding: 100px;
+color: #000;
+transition: text-shadow 0.3s, font-size 0.3s;
+}
+.link:hover{
+    
+text-shadow: 10px 10px 1px rgba(0, 0, 0, 0.4);
+font-size: 18px;
+}

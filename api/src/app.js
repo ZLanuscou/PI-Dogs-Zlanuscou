@@ -2,8 +2,11 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const routes = require('./routes/index.js');
-
+const GetById = require('./routes/GetById');
+const GetByNameRout = require('./routes/GetByNameRoute');
+const GetAllRoute = require('./routes/GetDogRoute');
+const PostRouter = require('./routes/PostDogsRoute');
+const TempsRoute = require('./routes/TempsRoute');
 require('./db.js');
 
 const server = express();
@@ -22,8 +25,11 @@ server.use((req, res, next) => {
   next();
 });
 
-server.use('/', routes);
-
+server.use('/dogs', GetAllRoute);
+server.use('/dogs/filter', GetById);
+server.use('/dogs/name', GetByNameRout);
+server.use('/dogs', PostRouter);
+server.use('/dogs', TempsRoute);
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   const status = err.status || 500;

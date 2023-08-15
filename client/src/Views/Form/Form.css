@@ -1,0 +1,59 @@
+.input{
+    border: none;
+     outline: none;
+     background-color: rgb(135, 135, 135);
+     height: 40px;
+    width: 400px;
+    border-radius: 6px;
+}
+
+.divForm{
+    display: flex;
+    flex-direction:column ;
+    padding: 20px;
+    background-image: url("https://p4.wallpaperbetter.com/wallpaper/402/740/38/funny-picture-of-dogs-underwater-chasing-wallpaper-preview.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+    z-index: -1;
+    position: fixed;
+}
+.divEspacio{
+    border-radius:10px ;
+    background-color: rgba(0, 0, 0, 0.862);
+    box-shadow: 10px 10px 2px rgba(0, 0, 0, 0.726);
+    width: 30%;
+    margin: 0 auto;
+    padding: 50px;
+}
+.labelForm{
+ color: white;
+ display: flex;
+  flex-direction: column;
+ 
+ padding: 5px;
+}
+.divBuscarForm{
+    padding: 30px;
+    border: none;
+    
+}
+.inputBuscarForm{
+    border-radius: 6px;
+    border: none;
+   height: 50px;
+   width: 220px;
+   color: white;
+   background-color: rgba(67, 78, 194, 0.851);
+   padding: 10px;
+}
+.selectForm{
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+   width: 220px;
+   text-align: center;
+}
+.p{
+    color:red
+}
