@@ -1,9 +1,11 @@
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useEffect, useState } from 'react';
+
+
 import "./Detail.css"
 import axios from "axios";
 export default  function Detail(props) {
-    const navigate = useNavigate();
+
     const {id} = useParams();
     const [detail, setDetail]  = useState({})
     useEffect(() => {
@@ -17,9 +19,10 @@ export default  function Detail(props) {
         }
         fetchData();
       }, [id]);
-     
+   
     return(
       <div className="backgrounD">  
+      
      <div className="divD">
       <div className="divImagenD">
         <img className="imagenD" src={detail.Imagen} alt={detail.Nombre} />

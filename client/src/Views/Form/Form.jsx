@@ -8,6 +8,7 @@ export default function Form(props) {
   const navigate = useNavigate()
     const [dogData, setDogData] = useState({Nombre:"", Altura: "", Peso: "", Años_de_vida:"", Temperamentos:[], Imagen:""})
     const [error, setError] = useState({});
+    const [messageSubmit, setMessageSubmit] = useState("")
     const tempState = useSelector((state)=> state.Temperaments)
     const dispatch = useDispatch()
     useEffect(()=>{
@@ -15,6 +16,7 @@ export default function Form(props) {
       },[dispatch])
     function handleChange(event) {
       event.preventDefault();
+      setMessageSubmit("")
       let updatedData;
       if (event.target.name === "Temperamentos") {
         updatedData = {
@@ -27,7 +29,7 @@ export default function Form(props) {
           [event.target.name]: event.target.value
         };
       }
-       
+
         setDogData(updatedData);
         setError(Validate({ ...dogData, [event.target.name]: event.target.value  }))
         console.log("array temp", dogData.Temperamentos)
@@ -35,6 +37,7 @@ export default function Form(props) {
     
     const handleSumbit = async (event) => {
      event.preventDefault()
+     try{
       if(Object.keys(error).length === 0){ 
         
         const temperamentosString = dogData.Temperamentos.join(", ");
@@ -42,17 +45,21 @@ export default function Form(props) {
        console.log("temperamentos form", temperamentosString)
        console.log(" dog form", dogDataToSend)
           if(dogDataToSend){
-             dispatch(PostDog(dogDataToSend));
+            await dispatch(PostDog(dogDataToSend));
           
        setDogData({Nombre:"", Altura: "", Peso: "", Años_de_vida:"", Temperamentos:[], Imagen: ""})
-       navigate( "/home")
+
+        setMessageSubmit("Perro creado exitosamente!")
       } }else{
          return alert("Escribe bien los datos antes de enviar!")
-       } 
+       } }catch{
+        setMessageSubmit("Perro ya existente!")
+       }
       
     }
     return(
    <div className="divForm">
+    {messageSubmit && <h1 style={{ color: 'white' }}>{messageSubmit}</h1>}
     <div className="divEspacio">  
   <form onSubmit={handleSumbit}>
   <label className="labelForm">Nombre</label>
@@ -98,6 +105,7 @@ name="Imagen"/>
   
   </form>
   </div>
+  
    </div>
 
    ) 

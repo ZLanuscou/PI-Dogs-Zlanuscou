@@ -1,15 +1,17 @@
 import { useSelector, useDispatch,  } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Component } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GetAllDogs, Order, OrderOrigin, OrderTemperament, GetTemperaments, GetName} from '../../Redux/actions';
+import {  GetAllDogs, Order, OrderOrigin, OrderTemperament, GetTemperaments, GetName} from '../../Redux/actions';
 import Cards from '../Cards/Cards';
 import "./home.css"
 function Home() {
   const navigate = useNavigate()
   const itemsPage = 8
   const dispatch = useDispatch()
+  const cache = useSelector((state)=> state.Cache)
   const allDogs = useSelector((state)=> state.Dogs)
   const tempState = useSelector((state)=> state.Temperaments)
+  
   const [Name, setName] = useState("")
   const [Page, setPage] = useState(0)
   const [Dogs, setDogs] = useState(allDogs)
@@ -17,14 +19,16 @@ function Home() {
   const startIndex = itemsPage * Page;
   const endIndex = startIndex + itemsPage;
   const [DogsPerPage, setDogsPerPage] = useState([])
-  useEffect(()=>{
-    dispatch(GetAllDogs())
-  },[dispatch])
+  useEffect(() => {
+      dispatch(GetAllDogs());
+  }, []);
   useEffect(() => {
     setDogs(allDogs);
   }, [allDogs]);
   useEffect(()=>{
+    
     setDogsPerPage(Dogs.slice(startIndex, endIndex)) 
+    
   }, [Dogs, startIndex, endIndex])
   useEffect(()=>{
     dispatch(GetTemperaments())
@@ -58,19 +62,26 @@ const handleChange = (e)=>{
   if(name){ 
     setName(name)
   }else{
-   dispatch(GetAllDogs())
+dispatch(GetAllDogs())
+   setName("")
   }
 }
 const handleOrder = (e)=>{
 dispatch(Order(e.target.value))
+
 }
-const handleOrderOrigin = (e)=>{
+const handleOrderOrigin = async(e)=>{
   dispatch(OrderOrigin(e.target.value))
   
+    setPage(0)
+ 
   }
   const handleOrderTemperament = async(e)=>{
-
-    dispatch(OrderTemperament(e.target.value))
+     dispatch(OrderTemperament(e.target.value))
+     setPage(0)
+    }
+    const handleDeleteFilters = async(e)=>{
+       dispatch(GetAllDogs())
     }
     return (
       <div className='premierContainer'>
@@ -80,7 +91,8 @@ const handleOrderOrigin = (e)=>{
         </div>
         <div className='menu'>
           <button className='menuBtn'>Filtros🠻</button>
-          <div className='menuContent'>  
+          <div className='menuContent'>
+          <button onClick={handleDeleteFilters}>Quitar filtros</button> 
         <select className="select"onChange={handleOrder}>
         <option value={"A"}>A-Z</option>
         <option value={"D"}>Z-A</option>
@@ -90,15 +102,17 @@ const handleOrderOrigin = (e)=>{
         <select className="select"onChange={handleOrderOrigin}>
         <option value={"BD"}>Base de datos</option>
         <option value={"API"}>API</option>
+        <option value={"TODOS"}>TODOS</option>
         </select>
         <select className="select"onChange={handleOrderTemperament}>
         {tempState.map((t) => (
     <option key={t.Nombre} value={t.Nombre}>{t.Nombre}</option>
     ))}
+    
         </select>
         </div> 
         </div>
-        <Cards allDogs = {DogsPerPage}/>
+        <Cards allDogs = {DogsPerPage} />
         <div className='pageDiv'>
         <button className="button" onClick={handlePrev}>Prev</button>
         <h3>{"Pagina"+Page}</h3>

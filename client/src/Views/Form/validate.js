@@ -1,7 +1,7 @@
 function Validate(dog) {
     const incorrecto = {}
     const regex = new RegExp(/[0-9]/)
-    if(dog.Peso.length < 1 || dog.Altura.length <1 || dog.Años_de_vida.length < 1 || dog.Nombre.length<1 || dog.Temperamentos.length < 1){
+    if(  dog.Peso.length < 1 || dog.Altura.length <1 || dog.Años_de_vida.length < 1 || dog.Nombre.length<1 || dog.Temperamentos.length < 1){
       incorrecto.Llenar = "Error datos vacios"
     }
   if(dog.Peso < 1){

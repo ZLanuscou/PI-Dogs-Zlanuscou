@@ -1,9 +1,10 @@
-import { GET_ALLDOGS, GET_NAME, GET_TEMPERAMENTS, ORDER, ORDER_ORIGIN, ORDER_TEMPERAMENT, POST } from "./actions";
+import {GET_ALLDOGS, GET_NAME, GET_TEMPERAMENTS, ORDER, ORDER_ORIGIN, ORDER_TEMPERAMENT, POST } from "./actions";
 import {validate} from "uuid"
 const initialState = {
    Dogs:[],
    DogsCopy:[],
-   Temperaments:[]
+   Temperaments:[],
+  filtros:[]
 }
 
 const reducer = (state = initialState, action)=>{
@@ -14,7 +15,8 @@ switch (action.type) {
         return{
             ...state,
             Dogs: action.payload,
-            DogsCopy: action.payload
+            DogsCopy: action.payload,
+            filtros: action.payload
         }
         case GET_TEMPERAMENTS:
             return{
@@ -25,7 +27,8 @@ switch (action.type) {
                 return{
                     ...state,
                   Dogs: action.payload,
-                  DogsCopy: action.payload
+                  DogsCopy: action.payload,
+                  
                 }  
             case POST:{
                 return{
@@ -90,7 +93,7 @@ switch (action.type) {
             return{
                 ...state,
                 Dogs:filter,  
-
+                filtros:filter
             }
            }
            if(action.payload=== "API"){
@@ -99,11 +102,20 @@ switch (action.type) {
             return{
                 ...state,
                 Dogs:filter,
-                
+                filtros:filter
+            }
+           }
+           if(action.payload=== "TODOS"){
+            return{
+              ...state,
+              Dogs: state.DogsCopy,
+              filtros: state.DogsCopy
             }
            }
            case ORDER_TEMPERAMENT:
-            let copyTemp = [...state.DogsCopy]; 
+            var copyTemp = [...state.DogsCopy];
+            if(state.filtros.length > 0){
+             copyTemp = [...state.filtros]; }
             const filterTemp = copyTemp.filter(d => {
               if (d.Temperamentos) {
                 const tempArray = d.Temperamentos.split(",").map(t => t.trim());
