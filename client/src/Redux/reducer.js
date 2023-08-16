@@ -28,7 +28,7 @@ switch (action.type) {
                     ...state,
                   Dogs: action.payload,
                   DogsCopy: action.payload,
-                  
+                  filtros: action.payload
                 }  
             case POST:{
                 return{
