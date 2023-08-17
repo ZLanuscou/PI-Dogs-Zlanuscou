@@ -11,19 +11,20 @@
 -  Aprender y practicar el workflow de GIT.
 -  Utilizar y practicar testing.
 
-<br />
-## **Requisitos para ejecutare localmente**
-1.npm install
-2.Instalar PostgreSQL
-3. Crea una base de datos con el nombre dogs
-4. Dentro de /api cree un archivo .env con sus credenciales:
-DB_USER="Su usuario"
-DB_PASSWORD="Su contraseña"
-DB_HOST=localhost
-API_KEY= "yourApiKey" 
-URL = "https://api.thedogapi.com/v1/breeds"
-(si no tienes apiKey la puedes conseguir de aqui https://www.thedogapi.com)
-## **Iniciar en localhost**
-npm start en la carpeta "/client" y luego npm start en la carpeta "/api"
 
+## **Requisitos para ejecutare localmente**
+- 1.npm install
+- 2.Instalar PostgreSQL
+- 3. Crea una base de datos con el nombre dogs
+- 4. Dentro de /api cree un archivo .env con sus credenciales:
+- DB_USER="Su usuario"
+- DB_PASSWORD="Su contraseña"
+- DB_HOST=localhost
+- API_KEY= "yourApiKey" 
+- URL = "https://api.thedogapi.com/v1/breeds"
+ - (si no tienes apiKey la puedes conseguir de aqui https://www.thedogapi.com)
+## **Iniciar en localhost**
+ - npm start en la carpeta "/client" y luego npm start en la carpeta "/api"
+
+<br />
 <img src="./dogs.jpg" alt="" width="1000px" />
